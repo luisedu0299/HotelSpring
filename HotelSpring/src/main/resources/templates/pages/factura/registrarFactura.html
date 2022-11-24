@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/partials/base.html ::head">
+
+</head>
+
+<body>
+    <nav th:replace="/partials/base.html ::barra"></nav>
+    <div class="container">
+        <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+    
+        <form th:action="@{/factura/form}" th:object="${factura}" method="post">
+            <input type="hidden" th:field="*{idFactura}">
+
+            <select name="th:field{servicio}">
+                <th:block th:each=" servicio :${servicios}">
+                    <option th:text="${servicio.idServicio}" th:value="${servicio.tipoServicio}"></option>
+                </th:block>
+            </select>
+            
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Costo</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="number" th:field="*{costoFactura}">
+                </div>
+    
+            </div>
+    
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Detalle</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" th:field="*{detalleFactura}">
+                </div>
+    
+            </div>
+            <br>
+            <input type="submit" value="Crear Detalle" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>

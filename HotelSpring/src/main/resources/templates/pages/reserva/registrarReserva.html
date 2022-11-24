@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/partials/base.html ::head">
+
+</head>
+
+<body>
+    <nav th:replace="/partials/base.html ::barra"></nav>
+    <div class="container">
+        <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+    
+        <form th:action="@{/reserva/form}" th:object="${reserva}" method="post">
+            <input type="hidden" th:field="*{idReserva}">
+
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Fecha Ingreso</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="date" th:field="*{fechaIngreso}">
+                </div>
+    
+            </div>
+    
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Fecha Salida</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="date" th:field="*{fechaSalida}">
+                </div>
+    
+            </div>
+    
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Usuario</label>
+                <div class="col-sm-6">
+                    <select th:field="*{usuario}">
+                        <th:block th:each=" usuario : ${usuarios}">
+                            <option th:text="${usuario.nombreUsuario}" th:value="${usuario.idUsuario}"></option>
+                        </th:block>
+                    </select>
+                </div>
+    
+            </div>
+
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Factura</label>
+                <div class="col-sm-6">
+                    <select th:field="*{factura}">
+                        <th:block th:each=" factura : ${facturas}">
+                            <option th:text="${factura.servicioFactura}" th:value="${factura.idFactura}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            
+            </div>
+
+            <br>
+            <input type="submit" value="Crear Detalle" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>

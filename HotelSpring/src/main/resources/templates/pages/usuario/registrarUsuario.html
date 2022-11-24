@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/partials/base.html ::head">
+
+</head>
+
+<body>
+    <nav th:replace="/partials/base.html ::barra"></nav>
+    <div class="container">
+        <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+    
+        <form th:action="@{/usuario/form}" th:object="${usuario}" method="post">
+            <input type="hidden" th:field="*{idUsuario}">
+
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" th:field="*{nombreUsuario}">
+                </div>
+    
+            </div>
+    
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Telefono</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="number" th:field="*{telefonoUsuario}">
+                </div>
+    
+            </div>
+    
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Correo</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="email" th:field="*{correoUsuario}">
+                </div>
+    
+            </div>
+            <br>
+            <input type="submit" value="Crear Usuario" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>

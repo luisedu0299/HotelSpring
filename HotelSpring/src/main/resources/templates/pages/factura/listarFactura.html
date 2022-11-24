@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/partials/base.html ::head">
+
+</head>
+
+<body>
+    <nav th:replace="/partials/base.html ::barra"></nav>
+    
+    <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+    <p><a th:href="@{/factura/form}" class="btn btn-success btn-xs">Crear Factura</a></p>
+    <table class="table table-striper">
+        <thead>
+            <th>ID</th>
+            <th>Servicio</th>
+            <th>Costo</th>
+            <th>Detalle</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+    
+        </thead>
+    
+        <tbody>
+            <tr th:each="factura: ${facturas}">
+                <td th:text="${factura.idFactura}"></td>
+                <td th:text="${factura.servicioFactura}"></td>
+                <td th:text="${factura.costoFactura}"></td>
+                <td th:text="${factura.detalleFactura}"></td>
+    
+                <td><a th:href="@{/factura/actualizar/} + ${factura.idFactura}" class="btn btn-primary btn-xs">Editar</a></td>
+                <td><a th:href="@{/factura/eliminar/} + ${factura.idFactura}" class="btn btn-danger btn-xs"
+                        onclick="return confirm('Esta seguro que desea eliminar el registro?')">Eliminar</a></td>
+    
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+
+</html>
+

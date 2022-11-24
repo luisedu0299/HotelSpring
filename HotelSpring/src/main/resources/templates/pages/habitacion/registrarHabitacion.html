@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/partials/base.html ::head">
+
+</head>
+
+<body>
+    <nav th:replace="/partials/base.html ::barra"></nav>
+    <div class="container">
+        <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+    
+        <form th:action="@{/habitacion/form}" th:object="${habitacion}" method="post">
+
+            <input type="hidden" th:field="*{idHabitacion}">
+
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Detalle</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" th:field="*{detalleHabitacion}">
+                </div>
+    
+            </div>
+    
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Reserva</label>
+                <div class="col-sm-6">
+                    <select th:field="*{estadoHabitacion}">
+                        <option value="libre">Libre</option>
+                        <option value="ocupada">Ocupada</option>
+                        <option value="en limpieza">En limpieza</option>
+                    </select>
+                </div>
+            
+            </div>
+    
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Reserva</label>
+                <div class="col-sm-6">
+                    <select th:field="*{reserva}">
+                        <th:block th:each=" reserva : ${reservas}">
+                            <option th:text="${reserva.idReserva}" th:value="${reserva.idReserva}"></option>
+                        </th:block>
+                    </select>
+                </div>
+    
+            </div>
+
+            <br>
+            <input type="submit" value="Crear Habitacion" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>

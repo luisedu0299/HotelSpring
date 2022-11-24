@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/partials/base.html ::head">
+
+</head>
+
+<body>
+    <nav th:replace="/partials/base.html ::barra"></nav>
+    
+    <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+    <p><a th:href="@{/reserva/form}" class="btn btn-success btn-xs">Crear Reserva</a></p>
+    <table class="table table-striper">
+        <thead>
+            <th>ID</th>
+            <th>Fecha Ingreso</th>
+            <th>Fecha Salida</th>
+            <th>Usuario</th>
+            <th>Factura</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+    
+        </thead>
+    
+        <tbody>
+            <tr th:each="reserva: ${reservas}">
+                <td th:text="${reserva.idReserva}"></td>
+                <td th:text="${reserva.fechaIngreso}"></td>
+                <td th:text="${reserva.fechaSalida}"></td>
+                <td th:text="${reserva.usuario.nombreUsuario}"></td>
+                <td th:text="${reserva.factura.servicioFactura}"></td>
+    
+                <td><a th:href="@{/reserva/actualizar/} + ${reserva.idReserva}" class="btn btn-primary btn-xs">Editar</a></td>
+                <td><a th:href="@{/reserva/eliminar/} + ${reserva.idReserva}" class="btn btn-danger btn-xs"
+                        onclick="return confirm('Esta seguro que desea eliminar el registro?')">Eliminar</a></td>
+    
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+
+</html>
+

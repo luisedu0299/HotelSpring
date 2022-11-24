@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/partials/base.html ::head">
+
+</head>
+
+<body>
+    <nav th:replace="/partials/base.html ::barra"></nav>
+    
+    <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+    <p><a th:href="@{/habitacion/form}" class="btn btn-success btn-xs">Crear Habitacion</a></p>
+    <table class="table table-striper">
+        <thead>
+            <th>ID</th>
+            <th>Detalle</th>
+            <th>Estado</th>
+            <th>Reserva</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+    
+        </thead>
+    
+        <tbody>
+            <tr th:each="habitacion: ${habitaciones}">
+                <td th:text="${habitacion.idHabitacion}"></td>
+                <td th:text="${habitacion.detalleHabitacion}"></td>
+                <td th:text="${habitacion.estadoHabitacion}"></td>
+                <td th:text="${habitacion.reserva.idReserva}"></td>
+    
+                <td><a th:href="@{/habitacion/actualizar/} + ${habitacion.idHabitacion}" class="btn btn-primary btn-xs">Editar</a></td>
+                <td><a th:href="@{/habitacion/eliminar/} + ${habitacion.idHabitacion}" class="btn btn-danger btn-xs"
+                        onclick="return confirm('Esta seguro que desea eliminar el registro?')">Eliminar</a></td>
+    
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+
+</html>
+
