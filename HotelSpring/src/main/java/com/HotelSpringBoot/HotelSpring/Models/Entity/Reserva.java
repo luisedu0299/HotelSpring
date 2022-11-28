@@ -39,9 +39,21 @@ public class Reserva implements Serializable{
     @JoinColumn(name = "IdUsuario")
     private Usuario usuario;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "IdFactura")
-    private Factura factura;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "IdServicio")
+    private Servicio servicio;
+
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "IdHabitacion")
+    private Habitacion habitacion;
+
+	public Habitacion getHabitacion() {
+		return habitacion;
+	}
+
+	public void setHabitacion(Habitacion habitacion) {
+		this.habitacion = habitacion;
+	}
 
 	public Integer getIdReserva() {
 		return idReserva;
@@ -75,13 +87,14 @@ public class Reserva implements Serializable{
 		this.usuario = usuario;
 	}
 
-	public Factura getFactura() {
-		return factura;
+	public Servicio getServicio() {
+		return servicio;
 	}
 
-	public void setFactura(Factura factura) {
-		this.factura = factura;
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
 	}
 
+	
     
 }

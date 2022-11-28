@@ -28,10 +28,16 @@ public class Factura implements Serializable{
     private String detalleFactura;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "IdServicio")
-    private Servicio servicio;
+    @JoinColumn(name = "IdReserva")
+    private Reserva reserva;
 
+    public Integer getIdFactura() {
+        return idFactura;
+    }
 
+    public void setIdFactura(Integer idFactura) {
+        this.idFactura = idFactura;
+    }
 
     public Integer getCostoFactura() {
         return costoFactura;
@@ -49,23 +55,15 @@ public class Factura implements Serializable{
         this.detalleFactura = detalleFactura;
     }
 
-    public Servicio getServicio() {
-        return servicio;
+    public Reserva getReserva() {
+        return reserva;
     }
 
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 
-    public Integer getIdFactura() {
-        return idFactura;
-    }
 
-    public void setIdFactura(Integer idFactura) {
-        this.idFactura = idFactura;
-    }
-
-   
 
 }
 

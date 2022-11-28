@@ -30,7 +30,7 @@
             </div>
     
             <div class="form-groupe">
-                <label class="col-sm-2 col-form-label">Usuario</label>
+                <label class="col-sm-2 col-form-label">Usuario:</label>
                 <div class="col-sm-6">
                     <select th:field="*{usuario}">
                         <th:block th:each=" usuario : ${usuarios}">
@@ -42,17 +42,28 @@
             </div>
 
             <div class="form-groupe">
-                <label class="col-sm-2 col-form-label">Factura</label>
+                <label class="col-sm-2 col-form-label">Servicio:</label>
                 <div class="col-sm-6">
-                    <select th:field="*{factura}">
-                        <th:block th:each=" factura : ${facturas}">
-                            <option th:text="${factura.servicioFactura}" th:value="${factura.idFactura}"></option>
+                    <select th:field="*{servicio}">
+                        <th:block th:each=" servicio : ${servicios}">
+                            <option th:text="${servicio.tipoServicio}" th:value="${servicio.idServicio}"></option>
                         </th:block>
                     </select>
                 </div>
             
             </div>
 
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Habitacion:</label>
+                <div class="col-sm-6">
+                    <select th:field="*{habitacion}">
+                        <th:block th:each=" habitacion : ${habitaciones}">
+                            <option th:text="${habitacion.detalleHabitacion}" th:value="${habitacion.idHabitacion}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            
+            </div>
             <br>
             <input type="submit" value="Crear Detalle" class="btn btn-primary">
         </form>

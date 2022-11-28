@@ -7,33 +7,33 @@
 
 <body>
     <nav th:replace="/partials/base.html ::barra"></nav>
-    
-    <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
-    <p><a th:href="@{/reserva/form}" class="btn btn-success btn-xs">Crear Reserva</a></p>
-    <table class="table table-striper">
-        <thead>
-            <th>ID</th>
-            <th>Tipo</th>
-            <th>Detalle</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-    
-        </thead>
-    
-        <tbody>
-            <tr th:each="servicio: ${servicios}">
-                <td th:text="${servicio.idServicio}"></td>
-                <td th:text="${servicio.tipoServicio}"></td>
-                <td th:text="${servicio.detalleServicio}"></td>
-    
-                <td><a th:href="@{/servicio/actualizar/} + ${servicio.idServicio}" class="btn btn-primary btn-xs">Editar</a></td>
-                <td><a th:href="@{/servicio/eliminar/} + ${servicio.idServicio}" class="btn btn-danger btn-xs"
+    <div class="container">
+        <h1 class="text-primary border border-primari border-top-0" th:text="${titulo}"></h1>
+        <p><a th:href="@{/servicio/form}" class="btn btn-success btn-xs">Crear Servicio</a></p>
+        <table class="table table-striper">
+            <thead>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Detalle</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+        
+            </thead>
+        
+            <tbody>
+                <tr th:each="servicio: ${servicios}">
+                    <td th:text="${servicio.idServicio}"></td>
+                    <td th:text="${servicio.tipoServicio}"></td>
+                    <td th:text="${servicio.detalleServicio}"></td>
+        
+                    <td><a th:href="@{/servicio/actualizar/} + ${servicio.idServicio}" class="btn btn-primary btn-xs">Editar</a></td>
+                    <td><a th:href="@{/servicio/eliminar/} + ${servicio.idServicio}" class="btn btn-danger btn-xs"
                         onclick="return confirm('Esta seguro que desea eliminar el registro?')">Eliminar</a></td>
-    
-            </tr>
-        </tbody>
-    </table>
-    
+        
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

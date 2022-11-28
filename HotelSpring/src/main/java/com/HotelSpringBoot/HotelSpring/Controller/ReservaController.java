@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.HotelSpringBoot.HotelSpring.Models.Entity.Reserva;
-import com.HotelSpringBoot.HotelSpring.Models.Service.Factura.IFacturaService;
+import com.HotelSpringBoot.HotelSpring.Models.Service.Servicio.IServicioService;
 import com.HotelSpringBoot.HotelSpring.Models.Service.Reserva.IReservaService;
 import com.HotelSpringBoot.HotelSpring.Models.Service.Usuario.IUsuarioService;
-
-
+import com.HotelSpringBoot.HotelSpring.Models.Service.Habitacion.IHabitacionService;
 
 
 @Controller
@@ -27,7 +26,10 @@ public class ReservaController {
     private IUsuarioService userSer;
 
     @Autowired
-    private IFacturaService facturSer;
+    private IServicioService servicioSer;
+
+    @Autowired
+    private IHabitacionService habiSer;
 
     @GetMapping("/listar")
     public String listar(Model model) {
@@ -38,7 +40,8 @@ public class ReservaController {
 
     @GetMapping("/form")
     public String formularioRender(Model model) {
-        model.addAttribute("facturas", facturSer.findAll());
+        model.addAttribute("servicios", servicioSer.findAll());
+        model.addAttribute("habitaciones", habiSer.findAll());
         model.addAttribute("usuarios", userSer.findAll());
         model.addAttribute("reserva", new Reserva());
         model.addAttribute("titulo", "Crear Reserva");
@@ -64,8 +67,9 @@ public class ReservaController {
         Optional<Reserva> reserva = reservaSer.findOne(id);
         model.addAttribute("reserva", reserva);
         model.addAttribute("titulo", "Actualizar Reserva");
-        model.addAttribute("facturas", facturSer.findAll());
+        model.addAttribute("servicios", servicioSer.findAll());
         model.addAttribute("usuarios", userSer.findAll());
+        model.addAttribute("habitaciones", habiSer.findAll());
         return "pages/reserva/registrarReserva";
     }
 }

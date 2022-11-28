@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Usuario")
+@Table(name = "Usuario", uniqueConstraints = @UniqueConstraint(columnNames = "CorreoUsuario"))
 public class Usuario implements Serializable{
 
     @Id
@@ -22,7 +23,7 @@ public class Usuario implements Serializable{
     private String nombreUsuario;
 
     @Column(name = "TelefonoUsuario")
-    private Integer telefonoUsuario;
+    private Long telefonoUsuario;
 
     @Column(name = "CorreoUsuario")
     private String correoUsuario ;
@@ -43,11 +44,11 @@ public class Usuario implements Serializable{
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Integer getTelefonoUsuario() {
+    public Long getTelefonoUsuario() {
         return telefonoUsuario;
     }
 
-    public void setTelefonoUsuario(Integer telefonoUsuario) {
+    public void setTelefonoUsuario(Long telefonoUsuario) {
         this.telefonoUsuario = telefonoUsuario;
     }
 

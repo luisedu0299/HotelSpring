@@ -25,8 +25,8 @@ public class ServicioController {
     public String listar(Model model){
         
         model.addAttribute("servicios", serv.findAll());
-        model.addAttribute("titulo", "servicios");
-        return "pages/servicios/listarServicios";
+        model.addAttribute("titulo", "Servicios");
+        return "pages/servicio/listarServicio";
     }
 
     @GetMapping("/form")

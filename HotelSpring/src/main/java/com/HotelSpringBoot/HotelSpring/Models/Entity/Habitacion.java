@@ -2,15 +2,13 @@ package com.HotelSpringBoot.HotelSpring.Models.Entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Habitacion")
@@ -27,9 +25,6 @@ public class Habitacion implements Serializable{
     @Column(name = "EstadoHabitacion")
     private String estadoHabitacion;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "IdReserva")
-    private Reserva reserva;
 
     public Integer getIdHabitacion() {
         return idHabitacion;
@@ -55,14 +50,5 @@ public class Habitacion implements Serializable{
         this.estadoHabitacion = estadoHabitacion;
     }
 
-    public Reserva getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
-    }
-
-    
     
 }

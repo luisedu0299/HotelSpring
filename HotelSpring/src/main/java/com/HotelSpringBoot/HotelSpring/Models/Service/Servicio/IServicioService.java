@@ -7,13 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.HotelSpringBoot.HotelSpring.Models.Entity.Servicio;
 
-
 @Service
 public interface IServicioService {
     
     public List<Servicio> findAll();
 
-    public void save (Servicio usuario);
+    public void save (Servicio servicio);
 
     public Optional<Servicio> findOne(Integer id);
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.HotelSpringBoot.HotelSpring.Models.Entity.Factura;
 import com.HotelSpringBoot.HotelSpring.Models.Service.Factura.IFacturaService;
-import com.HotelSpringBoot.HotelSpring.Models.Service.Servicio.IServicioService;
+import com.HotelSpringBoot.HotelSpring.Models.Service.Reserva.IReservaService;
 
 
 
@@ -22,10 +22,9 @@ public class FacturaController {
     @Autowired
     private IFacturaService factSer;
     @Autowired
-    private IServicioService serSer;
+    private IReservaService resSer;
     @GetMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("servicios", serSer.findAll());
         model.addAttribute("facturas", factSer.findAll());
         model.addAttribute("titulo", "Facturas");
         return "pages/factura/listarFactura";
@@ -33,9 +32,9 @@ public class FacturaController {
 
     @GetMapping("/form")
     public String formularioRender(Model model) {
-        model.addAttribute("factura", new Factura());
-        model.addAttribute("servicios", serSer.findAll());
-        model.addAttribute("titulo", "Crear Reserva");
+        model.addAttribute("reservas", resSer.findAll());
+        model.addAttribute("factura", new Factura());       
+        model.addAttribute("titulo", "Crear Factura");
         return "pages/factura/registrarFactura";
     }
 
@@ -55,10 +54,10 @@ public class FacturaController {
 
     @GetMapping("/actualizar/{id}")
     public String actualizarFactura(@PathVariable Integer id, Model model) {
-        Optional<Factura> factura = factSer.findOne(id);
-        model.addAttribute("servicios", serSer.findAll());
+        Optional<Factura> factura = factSer.findOne(id);       
         model.addAttribute("factura", factura);
         model.addAttribute("titulo", "Actualizar Factura");
+        model.addAttribute("reservas", resSer.findAll());
         return "pages/factura/registrarFactura";
     }
 }

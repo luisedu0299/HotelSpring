@@ -29,22 +29,23 @@
     
             </div>
     
-            <div class="form-groupe">
+            <!--<div class="form-groupe">
                 <label class="col-sm-2 col-form-label">Servicio</label>
                 <div class="col-sm-6">
                     <select th:field="*{servicio}">
-                        <th:block th:each=" servicio : ${servicios}">
+                        <th:block th:each=" servicio : ${servicio}">
                             <option th:text="${servicio.tipoServicio}" th:value="${servicio.idServicio}"></option>
                         </th:block>
                     </select>
                 </div>
     
             </div>
+            -->
                 
-            </div>
+    </div>
 
             <br>
-            <input type="submit" value="Crear Detalle" class="btn btn-primary">
+            <input type="submit" value="Crear Servicio" class="btn btn-primary">
         </form>
     </div>
 </body>

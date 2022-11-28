@@ -2,11 +2,15 @@ package com.HotelSpringBoot.HotelSpring.Models.Entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,10 @@ public class Servicio implements Serializable{
     @Column(name = "DetalleServicio") 
     private String detalleServicio;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Servicio_Reserva",
+        joinColumns = @JoinColumn(name = "idServicio"),
+        inverseJoinColumns = @JoinColumn(name = "idReserva"))
     public Integer getIdServicio() {
         return idServicio;
     }
