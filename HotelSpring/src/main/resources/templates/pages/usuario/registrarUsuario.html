@@ -20,6 +20,14 @@
                 </div>
     
             </div>
+
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" th:field="*{userName}">
+                </div>
+    
+            </div>
     
             <div class="form-groupe">
                 <label class="col-sm-2 col-form-label">Telefono</label>
@@ -36,8 +44,23 @@
                 </div>
     
             </div>
+
+            <div class="form-groupe">
+                <label class="col-sm-2 col-form-label">Clave</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="password" th:field="*{password}">
+                </div>
+    
+            </div>
+
+            <label>Rol</label><br>
+            <select class="form-control" name="rol" th:field="*{rol}">
+                <option th:value="Admin" th:text="Administrador"></option>
+                <option th:value="Cliente" th:text="Cliente"></option>
+            </select>
             <br>
-            <input type="submit" value="Crear Usuario" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <br>
         </form>
     </div>
 </body>

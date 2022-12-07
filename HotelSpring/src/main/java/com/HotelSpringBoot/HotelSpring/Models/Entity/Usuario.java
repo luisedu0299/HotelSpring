@@ -8,16 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+
 
 @Entity
-@Table(name = "Usuario", uniqueConstraints = @UniqueConstraint(columnNames = "CorreoUsuario"))
+@Table(name = "Usuario")
 public class Usuario implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdUsuario")
-    private Integer idUsuario;
+    private Long idUsuario;
 
     @Column(name = "NombreUsuario")
     private String nombreUsuario;
@@ -28,11 +28,20 @@ public class Usuario implements Serializable{
     @Column(name = "CorreoUsuario")
     private String correoUsuario ;
 
-    public Integer getIdUsuario() {
+    @Column(name = "UserName")
+    private String userName ;
+    
+    @Column(name = "Password")
+    private String password ;
+    
+    @Column(name = "Rol")
+    private String rol ;
+
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -60,7 +69,29 @@ public class Usuario implements Serializable{
         this.correoUsuario = correoUsuario;
     }
 
-    
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
     
 }

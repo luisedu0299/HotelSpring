@@ -14,7 +14,7 @@ public interface IUsuarioService {
 
     public void save(Usuario usuario);
 
-    public Optional<Usuario> findOne(Integer id);
+    public Optional<Usuario> findOne(Long id);
 
-    public void delete(Integer id);
+    public void delete(Long id);
 }

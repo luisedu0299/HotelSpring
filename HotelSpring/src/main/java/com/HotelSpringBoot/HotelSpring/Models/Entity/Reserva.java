@@ -2,10 +2,13 @@ package com.HotelSpringBoot.HotelSpring.Models.Entity;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,9 +38,9 @@ public class Reserva implements Serializable{
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaSalida;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "IdUsuario")
-    private Usuario usuario;
+    private List<Usuario> usuario;
 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IdServicio")
@@ -54,6 +57,8 @@ public class Reserva implements Serializable{
 	public void setHabitacion(Habitacion habitacion) {
 		this.habitacion = habitacion;
 	}
+
+	
 
 	public Integer getIdReserva() {
 		return idReserva;
@@ -79,20 +84,20 @@ public class Reserva implements Serializable{
 		this.fechaSalida = fechaSalida;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public Servicio getServicio() {
 		return servicio;
 	}
 
 	public void setServicio(Servicio servicio) {
 		this.servicio = servicio;
+	}
+
+	public List<Usuario> getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(List<Usuario> usuario) {
+		this.usuario = usuario;
 	}
 
 	
